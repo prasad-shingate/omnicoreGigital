@@ -23,9 +23,9 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        
         body { background: var(--bg-dark); color: var(--text-main); overflow-x: hidden; }
 
+        /* --- Header & Navigation --- */
         header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 20px 5%; background: rgba(2, 6, 23, 0.8);
@@ -51,70 +51,67 @@
             text-decoration: none; display: inline-block;
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px -5px var(--accent-glow); }
-        .btn-outline { background: transparent; border: 1px solid #334155; margin-left: 15px; }
 
-        .section { padding: 100px 10%; text-align: center; }
-        .section-tag { color: var(--accent-primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 10px; display: block; }
-        .section h2 { font-size: 2.5rem; margin-bottom: 50px; }
+        .section { padding: 80px 8%; text-align: center; }
+        .section-tag { color: var(--accent-primary); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 15px; display: block; }
+        .section h2 { font-size: 2.8rem; margin-bottom: 20px; font-weight: 800; }
+        .section-desc { color: var(--text-dim); max-width: 650px; margin: 0 auto 50px; line-height: 1.6; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 
-        .card {
+        /* --- New Image Display Styling --- */
+        .showcase-card {
+            position: relative; border-radius: 20px; overflow: hidden; height: 320px;
+            background: #111; transition: 0.4s;
+        }
+        .showcase-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .showcase-card:hover .showcase-img { transform: scale(1.1); }
+        
+        .badge {
+            position: absolute; top: 15px; left: 15px; background: var(--accent-primary);
+            color: white; padding: 5px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+        }
+        .badge-insta { background: var(--insta); display: flex; align-items: center; gap: 5px; }
+
+        .play-btn {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 50px; height: 50px; background: rgba(59, 130, 246, 0.8);
+            border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white;
+        }
+
+        .img-label {
+            position: absolute; bottom: 0; width: 100%; padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            text-align: center; font-size: 0.85rem; font-weight: 600;
+        }
+
+        /* --- Social Platform Cards --- */
+        .social-card {
             background: var(--card-bg); padding: 40px; border-radius: 24px;
             text-align: left; border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.4s; position: relative; overflow: hidden;
-            text-decoration: none; color: inherit; display: block;
+            transition: 0.4s; text-decoration: none; color: inherit;
         }
-        .card:hover { transform: translateY(-10px); border-color: var(--accent-primary); background: #131c31; }
-        .card i { margin-bottom: 20px; }
-        .card h3 { margin-bottom: 15px; font-size: 1.4rem; color: white; }
-        .card p { color: var(--text-dim); line-height: 1.6; }
+        .social-card:hover { transform: translateY(-10px); }
+        .social-card.insta-hover:hover { border-bottom: 4px solid var(--insta); }
+        .social-card.yt-hover:hover { border-bottom: 4px solid var(--yt); }
+        .social-card.fb-hover:hover { border-bottom: 4px solid var(--fb); }
 
-        /* --- Moto Gallery --- */
-        .moto-img {
-            width: 100%; height: 350px; object-fit: cover; border-radius: 20px;
-            filter: grayscale(40%); transition: 0.5s;
-        }
-        .moto-card:hover .moto-img { filter: grayscale(0%); transform: scale(1.02); }
-        .moto-text { margin-top: 15px; font-weight: 600; color: var(--text-main); }
-
-        .process-row { text-align: left; max-width: 900px; margin: 0 auto; }
-        .step { display: flex; align-items: flex-start; margin-bottom: 40px; position: relative; }
-        .step-num { 
-            min-width: 45px; height: 45px; background: var(--accent-primary); 
-            border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            font-weight: 800; margin-right: 25px;
-        }
-
-        .price-card {
-            background: #0f172a; padding: 45px 30px; border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
-        }
-        .price-card.featured { border: 2px solid var(--accent-primary); transform: scale(1.05); background: #16213a; }
-        .price-card h3 { font-size: 1.2rem; color: var(--text-dim); }
-        .price-card .amount { font-size: 3rem; font-weight: 800; margin: 20px 0; }
-        .price-card ul { list-style: none; text-align: left; margin-bottom: 30px; color: var(--text-dim); }
-        .price-card li { margin-bottom: 12px; display: flex; align-items: center; }
-        .price-card li::before { content: '✓'; color: var(--success); margin-right: 10px; font-weight: bold; }
-
-        .contact-box { background: linear-gradient(180deg, #0f172a, #05070a); border-radius: 30px; padding: 60px; margin-top: 50px; }
-        footer { padding: 40px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--text-dim); font-size: 0.9rem; }
+        .social-card h3 { margin: 20px 0 10px; font-size: 1.6rem; }
+        .status-tag { font-size: 0.7rem; font-weight: 800; color: #ef4444; margin-top: 10px; display: block; text-transform: uppercase; }
 
         .whatsapp {
             position: fixed; bottom: 30px; right: 30px; background: #25D366;
             width: 60px; height: 60px; border-radius: 50%; display: flex;
             justify-content: center; align-items: center; color: white;
-            font-size: 30px; text-decoration: none; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            z-index: 9999; transition: 0.3s;
+            z-index: 9999;
         }
-        .whatsapp:hover { transform: scale(1.1); }
+
+        footer { padding: 40px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--text-dim); font-size: 0.9rem; }
 
         @media (max-width: 768px) {
-            header { padding: 20px; }
-            nav { display: none; }
-            .hero h1 { font-size: 2.8rem; }
-            .section { padding: 80px 5%; }
-            .price-card.featured { transform: scale(1); }
+            .section { padding: 60px 5%; }
+            .section h2 { font-size: 2.2rem; }
+            header { padding: 15px 5%; }
         }
     </style>
 </head>
@@ -124,8 +121,8 @@
     <a href="#" class="logo">OMNICORE</a>
     <nav>
         <a href="#services">Services</a>
-        <a href="#socials">Social Media</a>
-        <a href="#moto">Our Vision</a>
+        <a href="#work">Work</a>
+        <a href="#socials">Our Content</a>
         <a href="#pricing">Pricing</a>
     </nav>
     <a href="https://wa.me/918459530220" class="btn" style="padding: 10px 20px; font-size: 0.8rem;">Let's Talk</a>
@@ -135,186 +132,150 @@
     <span class="section-tag">Empowering Local Businesses</span>
     <h1>High-Impact <span>Videos</span> That Bring Customers To You</h1>
     <p>Professional promotional reels, creative branding, and shop visibility strategies for juice centers, cafes, and retail stores.</p>
-    <div class="hero-btns">
-        <a href="https://wa.me/918459530220" class="btn">Get My Business Promoted</a>
-        <a href="#pricing" class="btn btn-outline">View Packages</a>
+    <a href="https://wa.me/918459530220" class="btn">Get My Business Promoted</a>
+</section>
+
+<section id="work" class="section">
+    <span class="section-tag">Product Showcase</span>
+    <h2>Photos & Videos That Sell</h2>
+    <p class="section-desc">We capture your products in stunning detail — from mouthwatering food shots to eye-catching retail displays.</p>
+    
+    <div class="grid">
+        <div class="showcase-card">
+            <span class="badge">Photo</span>
+            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=500" class="showcase-img">
+        </div>
+        <div class="showcase-card">
+            <span class="badge" style="background: #3b82f6;">Video</span>
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=500" class="showcase-img">
+            <div class="play-btn"><i data-lucide="play"></i></div>
+        </div>
+        <div class="showcase-card">
+            <span class="badge">Photo</span>
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=500" class="showcase-img">
+        </div>
+        <div class="showcase-card">
+            <span class="badge" style="background: #3b82f6;">Video</span>
+            <img src="https://images.unsplash.com/photo-1556740734-7f9a2b774159?q=80&w=500" class="showcase-img">
+            <div class="play-btn"><i data-lucide="play"></i></div>
+        </div>
+        <div class="showcase-card">
+            <span class="badge">Photo</span>
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=500" class="showcase-img">
+        </div>
     </div>
+</section>
+
+<section class="section" style="background: #080b12;">
+    <span class="section-tag">Viral Reels</span>
+    <h2>Reels That Get Views</h2>
+    <p class="section-desc">Scroll-stopping short videos designed to go viral on Instagram and bring local customers to your door.</p>
+    
+    <div class="grid">
+        <div class="showcase-card">
+            <span class="badge badge-insta"><i data-lucide="instagram" size="14"></i> Reel</span>
+            <img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?q=80&w=500" class="showcase-img">
+            <div class="img-label">Dessert Making Reel</div>
+        </div>
+        <div class="showcase-card" style="border: 2px solid var(--insta);">
+            <span class="badge badge-insta"><i data-lucide="instagram" size="14"></i> Reel</span>
+            <img src="https://images.unsplash.com/photo-1506459225024-1428097a7e18?q=80&w=500" class="showcase-img">
+            <div class="img-label">Behind-the-Scenes</div>
+        </div>
+        <div class="showcase-card">
+            <span class="badge badge-insta"><i data-lucide="instagram" size="14"></i> Reel</span>
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500" class="showcase-img">
+            <div class="img-label">Product Highlight</div>
+        </div>
+        <div class="showcase-card">
+            <span class="badge badge-insta"><i data-lucide="instagram" size="14"></i> Reel</span>
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=500" class="showcase-img">
+            <div class="img-label">Cafe Vibes Reel</div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 40px;">
+        <a href="https://www.instagram.com/omnicoredigital?utm_source=qr&igsh=NGE1Nndqa3F6cW4y" class="btn" style="background: var(--insta); padding: 12px 24px; font-size: 0.9rem;">
+            <i data-lucide="instagram" style="vertical-align: middle; margin-right: 8px;"></i> View All Reels on Instagram
+        </a>
+    </div>
+</section>
+
+<section class="section">
+    <span class="section-tag">Full Branding</span>
+    <h2>Complete Brand Identity</h2>
+    <p class="section-desc">We don't just shoot videos — we build your entire brand from the ground up.</p>
 </section>
 
 <section id="socials" class="section" style="background: #080b12;">
-    <span class="section-tag">Stay Connected</span>
-    <h2>Follow Our Journey</h2>
+    <span class="section-tag">Our Content</span>
+    <h2>See Us In Action</h2>
+    <p class="section-desc">Follow us to see our latest transformations and viral content.</p>
+    
     <div class="grid">
-        <a href="https://www.instagram.com/omnicoredigital?utm_source=qr&igsh=NGE1Nndqa3F6cW4y" target="_blank" class="card">
-            <i data-lucide="instagram" size="40" color="var(--insta)"></i>
+        <a href="https://www.instagram.com/omnicoredigital?utm_source=qr&igsh=NGE1Nndqa3F6cW4y" target="_blank" class="social-card insta-hover">
+            <i data-lucide="instagram" size="32" color="var(--insta)"></i>
             <h3>Instagram</h3>
-            <p>Watch our latest viral reels and shop transformations in real-time.</p>
+            <p>Watch our latest high-energy Reels and shop transformations.</p>
+            <span style="color: var(--insta); font-size: 0.8rem; font-weight: 700; margin-top: 20px; display: block;">VIEW PROFILE →</span>
         </a>
-        <a href="#" class="card">
-            <i data-lucide="youtube" size="40" color="var(--yt)"></i>
+
+        <div class="social-card yt-hover">
+            <i data-lucide="youtube" size="32" color="var(--yt)"></i>
             <h3>YouTube</h3>
-            <p>Coming Soon: Detailed store tours and business growth masterclasses.</p>
-        </a>
-        <a href="#" class="card">
-            <i data-lucide="facebook" size="40" color="var(--fb)"></i>
+            <p>Cinematic long-form shop tours and business owner interviews.</p>
+            <span class="status-tag">Coming Soon</span>
+        </div>
+
+        <div class="social-card fb-hover">
+            <i data-lucide="facebook" size="32" color="var(--fb)"></i>
             <h3>Facebook</h3>
-            <p>Join our community of local merchants and retail business owners.</p>
-        </a>
-    </div>
-</section>
-
-<section id="moto" class="section">
-    <span class="section-tag">Our Moto</span>
-    <h2>Turning Shops Into Brands</h2>
-    <div class="grid">
-        <div class="moto-card">
-            <img src="https://images.unsplash.com/photo-1556740734-7f9a2b774159?auto=format&fit=crop&q=80&w=600" class="moto-img" alt="Retail Focus">
-            <p class="moto-text">Highlighting Every Detail</p>
-        </div>
-        <div class="moto-card">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=600" class="moto-img" alt="Cafe Focus">
-            <p class="moto-text">Capturing Local Vibes</p>
-        </div>
-        <div class="moto-card">
-            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=600" class="moto-img" alt="Production Focus">
-            <p class="moto-text">Professional Production</p>
+            <p>Local community updates and marketing tips for merchants.</p>
+            <span class="status-tag">Coming Soon</span>
         </div>
     </div>
-    <p style="margin-top: 40px; color: var(--text-dim); max-width: 800px; margin-left: auto; margin-right: auto;">
-        Our mission is simple: To provide local merchants with the same high-quality cinematic marketing that big brands use, making your business stand out in a crowded digital world.
-    </p>
-</section>
 
-<section id="services" class="section" style="background: #080b12;">
-    <span class="section-tag">What We Do</span>
-    <h2>Services Built for Growth</h2>
-    <div class="grid">
-        <div class="card">
-            <i data-lucide="video" size="40" color="#3b82f6"></i>
-            <h3>Product Showcases</h3>
-            <p>High-definition cinematic shots that make your food or products look irresistible to customers.</p>
+    <div class="grid" style="margin-top: 40px;">
+        <div class="showcase-card" style="height: 250px;">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=500" class="showcase-img">
+            <div class="img-label">Cafe Brand Shoot</div>
         </div>
-        <div class="card">
-            <i data-lucide="instagram" size="40" color="#3b82f6"></i>
-            <h3>Viral Reels</h3>
-            <p>Trend-focused short videos designed to blow up on Instagram and reach your local community.</p>
+        <div class="showcase-card" style="height: 250px;">
+            <img src="https://images.unsplash.com/photo-1464979681340-bdd28a61699e?q=80&w=500" class="showcase-img">
+            <div class="img-label">Juice Bar Promo</div>
         </div>
-        <div class="card">
-            <i data-lucide="map-pin" size="40" color="#3b82f6"></i>
-            <h3>Local SEO Push</h3>
-            <p>Strategically designed content that helps your shop show up when locals search for your services.</p>
-        </div>
-        <div class="card">
-            <i data-lucide="layers" size="40" color="#3b82f6"></i>
-            <h3>Full Branding</h3>
-            <p>From logos to digital posters, we ensure your shop looks like a professional premium brand.</p>
+        <div class="showcase-card" style="height: 250px;">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=500" class="showcase-img">
+            <div class="img-label">Retail Store Video</div>
         </div>
     </div>
 </section>
 
-<section id="process" class="section">
-    <span class="section-tag">Workflow</span>
-    <h2>How We Transform Your Shop</h2>
-    <div class="process-row">
-        <div class="step">
-            <div class="step-num">1</div>
-            <div>
-                <h3>Strategy & Visit</h3>
-                <p>We visit your location to understand your products and target audience.</p>
-            </div>
-        </div>
-        <div class="step">
-            <div class="step-num">2</div>
-            <div>
-                <h3>Creative Shoot</h3>
-                <p>Our team uses professional gear to capture the soul of your business.</p>
-            </div>
-        </div>
-        <div class="step">
-            <div class="step-num">3</div>
-            <div>
-                <h3>AI-Enhanced Editing</h3>
-                <p>We polish the content with modern effects and high-retention editing techniques.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="pricing" class="section" style="background: #080b12;">
+<section id="pricing" class="section">
     <span class="section-tag">Pricing Plans</span>
     <h2>Invest in Your Growth</h2>
     <div class="grid">
         <div class="price-card">
             <h3>Starter</h3>
             <div class="amount">₹999</div>
-            <ul>
-                <li>1 Promotional Reel</li>
-                <li>Standard Editing</li>
-                <li>48 Hour Delivery</li>
-                <li>Social Media Setup</li>
-            </ul>
-            <a href="https://wa.me/918459530220" class="btn btn-outline" style="width: 100%; margin:0;">Get Started</a>
+            <ul><li>1 Promotional Reel</li><li>Standard Editing</li><li>48 Hour Delivery</li></ul>
+            <a href="https://wa.me/918459530220" class="btn" style="width: 100%;">Get Started</a>
         </div>
         <div class="price-card featured">
             <h3>Business</h3>
             <div class="amount">₹1499</div>
-            <ul>
-                <li>2 Premium Reels</li>
-                <li>Cinematic Effects</li>
-                <li>Trending Audio Sync</li>
-                <li>Professional Captions</li>
-                <li>Local Tags Research</li>
-            </ul>
+            <ul><li>2 Premium Reels</li><li>Cinematic Effects</li><li>Professional Captions</li></ul>
             <a href="https://wa.me/918459530220" class="btn" style="width: 100%;">Popular Choice</a>
         </div>
-        <div class="price-card">
-            <h3>Growth</h3>
-            <div class="amount">₹2999</div>
-            <ul>
-                <li>4 High-Impact Videos</li>
-                <li>Store Tour Video</li>
-                <li>Full Branding Graphics</li>
-                <li>Google Maps Photos</li>
-            </ul>
-            <a href="https://wa.me/918459530220" class="btn btn-outline" style="width: 100%; margin:0;">Select Growth</a>
-        </div>
-    </div>
-</section>
-
-<section id="contact" class="section">
-    <div class="contact-box">
-        <span class="section-tag">Get in Touch</span>
-        <h2>Start Growing Today</h2>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 20px;">
-            <div>
-                <p style="color:var(--accent-primary); font-weight:700;">CALL US</p>
-                <p>+91 8459530220</p>
-            </div>
-            <div>
-                <p style="color:var(--accent-primary); font-weight:700;">EMAIL</p>
-                <p>hello.omnicore@gmail.com</p>
-            </div>
-            <div>
-                <p style="color:var(--accent-primary); font-weight:700;">INSTAGRAM</p>
-                <p>@omnicoredigital</p>
-            </div>
-        </div>
-        <br><br>
-        <a href="https://wa.me/918459530220" class="btn">Chat on WhatsApp</a>
     </div>
 </section>
 
 <a href="https://wa.me/918459530220" class="whatsapp">
-    <i data-lucide="message-circle"></i>
+    <i data-lucide="message-circle" size="30"></i>
 </a>
 
-<footer>
-    <p>© 2026 OmniCore Digital Agency. All rights reserved.</p>
-</footer>
+<footer><p>© 2026 OmniCore Digital Agency. All rights reserved.</p></footer>
 
-<script>
-    lucide.createIcons();
-</script>
-
+<script>lucide.createIcons();</script>
 </body>
 </html>
