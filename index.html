@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniCore Digital | High-Impact Business Growth</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --bg-dark: #05070a;
+            --card-bg: #0f172a;
+            --accent-primary: #3b82f6; /* Electric Blue */
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --success: #10b981;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        
+        body { background: var(--bg-dark); color: var(--text-main); overflow-x: hidden; }
+
+        /* --- Header & Navigation --- */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; background: linear-gradient(90deg, #fff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        nav a { color: var(--text-dim); margin-left: 30px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: var(--accent-primary); }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center; padding: 160px 20px 100px;
+            background: radial-gradient(circle at top, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+        }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 25px; font-weight: 800; }
+        .hero span { color: var(--accent-primary); }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin: 0 auto 40px; }
+
+        /* --- Buttons --- */
+        .btn {
+            background: var(--accent-primary); color: white; padding: 16px 36px;
+            border: none; border-radius: 12px; font-weight: 700; cursor: pointer;
+            transition: all 0.3s ease; box-shadow: 0 10px 20px -10px var(--accent-glow);
+            text-decoration: none; display: inline-block;
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px -5px var(--accent-glow); }
+        .btn-outline { background: transparent; border: 1px solid #334155; margin-left: 15px; }
+
+        /* --- Grid System --- */
+        .section { padding: 100px 10%; text-align: center; }
+        .section-tag { color: var(--accent-primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 10px; display: block; }
+        .section h2 { font-size: 2.5rem; margin-bottom: 50px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+
+        /* --- Service Cards --- */
+        .card {
+            background: var(--card-bg); padding: 40px; border-radius: 24px;
+            text-align: left; border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent-primary); background: #131c31; }
+        .card i { color: var(--accent-primary); margin-bottom: 20px; }
+        .card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+        .card p { color: var(--text-dim); line-height: 1.6; }
+
+        /* --- Process Step Styling --- */
+        .process-row { text-align: left; max-width: 900px; margin: 0 auto; }
+        .step { display: flex; align-items: flex-start; margin-bottom: 40px; position: relative; }
+        .step-num { 
+            min-width: 45px; height: 45px; background: var(--accent-primary); 
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-weight: 800; margin-right: 25px;
+        }
+
+        /* --- Pricing Table --- */
+        .price-card {
+            background: #0f172a; padding: 45px 30px; border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
+        }
+        .price-card.featured { border: 2px solid var(--accent-primary); transform: scale(1.05); background: #16213a; }
+        .price-card h3 { font-size: 1.2rem; color: var(--text-dim); }
+        .price-card .amount { font-size: 3rem; font-weight: 800; margin: 20px 0; }
+        .price-card ul { list-style: none; text-align: left; margin-bottom: 30px; color: var(--text-dim); }
+        .price-card li { margin-bottom: 12px; display: flex; align-items: center; }
+        .price-card li::before { content: '✓'; color: var(--success); margin-right: 10px; font-weight: bold; }
+
+        /* --- Footer & Contact --- */
+        .contact-box { background: linear-gradient(180deg, #0f172a, #05070a); border-radius: 30px; padding: 60px; margin-top: 50px; }
+        footer { padding: 40px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--text-dim); font-size: 0.9rem; }
+
+        /* --- Floating WhatsApp --- */
+        .whatsapp {
+            position: fixed; bottom: 30px; right: 30px; background: #25D366;
+            width: 60px; height: 60px; border-radius: 50%; display: flex;
+            justify-content: center; align-items: center; color: white;
+            font-size: 30px; text-decoration: none; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 9999; transition: 0.3s;
+        }
+        .whatsapp:hover { transform: scale(1.1); }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            nav { display: none; }
+            .hero h1 { font-size: 2.8rem; }
+            .section { padding: 80px 5%; }
+            .price-card.featured { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">OMNICORE</div>
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#process">Our Process</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <a href="https://wa.me/918459530220" class="btn" style="padding: 10px 20px; font-size: 0.8rem;">Let's Talk</a>
+</header>
+
+<section class="hero">
+    <span class="section-tag">Empowering Local Businesses</span>
+    <h1>High-Impact <span>Videos</span> That Bring Customers To You</h1>
+    <p>Professional promotional reels, creative branding, and shop visibility strategies for juice centers, cafes, and retail stores.</p>
+    <div class="hero-btns">
+        <a href="https://wa.me/918459530220" class="btn">Get My Business Promoted</a>
+        <a href="#pricing" class="btn btn-outline">View Packages</a>
+    </div>
+</section>
+
+<section id="services" class="section">
+    <span class="section-tag">What We Do</span>
+    <h2>Services Built for Growth</h2>
+    <div class="grid">
+        <div class="card">
+            <i data-lucide="video" size="40"></i>
+            <h3>Product Showcases</h3>
+            <p>High-definition cinematic shots that make your food or products look irresistible to customers.</p>
+        </div>
+        <div class="card">
+            <i data-lucide="instagram" size="40"></i>
+            <h3>Viral Reels</h3>
+            <p>Trend-focused short videos designed to blow up on Instagram and reach your local community.</p>
+        </div>
+        <div class="card">
+            <i data-lucide="map-pin" size="40"></i>
+            <h3>Local SEO Push</h3>
+            <p>Strategically designed content that helps your shop show up when locals search for your services.</p>
+        </div>
+        <div class="card">
+            <i data-lucide="layers" size="40"></i>
+            <h3>Full Branding</h3>
+            <p>From logos to digital posters, we ensure your shop looks like a professional premium brand.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="process" class="section" style="background: #080b12;">
+    <span class="section-tag">Workflow</span>
+    <h2>How We Transform Your Shop</h2>
+    <div class="process-row">
+        <div class="step">
+            <div class="step-num">1</div>
+            <div>
+                <h3>Strategy & Visit</h3>
+                <p>We visit your location to understand your products and target audience.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <div>
+                <h3>Creative Shoot</h3>
+                <p>Our team uses professional gear to capture the soul of your business.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <div>
+                <h3>AI-Enhanced Editing</h3>
+                <p>We polish the content with modern effects and high-retention editing techniques.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="pricing" class="section">
+    <span class="section-tag">Pricing Plans</span>
+    <h2>Invest in Your Growth</h2>
+    <div class="grid">
+        <div class="price-card">
+            <h3>Starter</h3>
+            <div class="amount">₹999</div>
+            <ul>
+                <li>1 Promotional Reel</li>
+                <li>Standard Editing</li>
+                <li>48 Hour Delivery</li>
+                <li>Social Media Setup</li>
+            </ul>
+            <a href="#" class="btn btn-outline" style="width: 100%; margin:0;">Get Started</a>
+        </div>
+        <div class="price-card featured">
+            <h3>Business</h3>
+            <div class="amount">₹1499</div>
+            <ul>
+                <li>2 Premium Reels</li>
+                <li>Cinematic Effects</li>
+                <li>Trending Audio Sync</li>
+                <li>Professional Captions</li>
+                <li>Local Tags Research</li>
+            </ul>
+            <a href="#" class="btn" style="width: 100%;">Popular Choice</a>
+        </div>
+        <div class="price-card">
+            <h3>Growth</h3>
+            <div class="amount">₹2999</div>
+            <ul>
+                <li>4 High-Impact Videos</li>
+                <li>Store Tour Video</li>
+                <li>Full Branding Graphics</li>
+                <li>Google Maps Photos</li>
+            </ul>
+            <a href="#" class="btn btn-outline" style="width: 100%; margin:0;">Select Growth</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section">
+    <div class="contact-box">
+        <span class="section-tag">Get in Touch</span>
+        <h2>Start Growing Today</h2>
+        <p style="margin-bottom: 30px;">Ready to see your shop full of customers? Message us now.</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 20px;">
+            <div>
+                <p style="color:var(--accent-primary); font-weight:700;">CALL US</p>
+                <p>+91 8459530220</p>
+            </div>
+            <div>
+                <p style="color:var(--accent-primary); font-weight:700;">EMAIL</p>
+                <p>hello.omnicore@gmail.com</p>
+            </div>
+            <div>
+                <p style="color:var(--accent-primary); font-weight:700;">INSTAGRAM</p>
+                <p>@omnicoredigital</p>
+            </div>
+        </div>
+        <br><br>
+        <a href="https://wa.me/918459530220" class="btn">Chat on WhatsApp</a>
+    </div>
+</section>
+
+<a href="https://wa.me/918459530220" class="whatsapp">
+    <i data-lucide="message-circle"></i>
+</a>
+
+<footer>
+    <p>© 2026 OmniCore Digital Agency. All rights reserved.</p>
+</footer>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
