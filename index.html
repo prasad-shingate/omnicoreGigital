@@ -12,29 +12,30 @@
         :root {
             --bg-dark: #05070a;
             --card-bg: #0f172a;
-            --accent-primary: #3b82f6; /* Electric Blue */
+            --accent-primary: #3b82f6; 
             --accent-glow: rgba(59, 130, 246, 0.5);
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
             --success: #10b981;
+            --insta: #E1306C;
+            --yt: #FF0000;
+            --fb: #1877F2;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
         
         body { background: var(--bg-dark); color: var(--text-main); overflow-x: hidden; }
 
-        /* --- Header & Navigation --- */
         header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 20px 5%; background: rgba(2, 6, 23, 0.8);
             backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; background: linear-gradient(90deg, #fff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; background: linear-gradient(90deg, #fff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
         nav a { color: var(--text-dim); margin-left: 30px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover { color: var(--accent-primary); }
 
-        /* --- Hero Section --- */
         .hero {
             text-align: center; padding: 160px 20px 100px;
             background: radial-gradient(circle at top, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
@@ -43,7 +44,6 @@
         .hero span { color: var(--accent-primary); }
         .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin: 0 auto 40px; }
 
-        /* --- Buttons --- */
         .btn {
             background: var(--accent-primary); color: white; padding: 16px 36px;
             border: none; border-radius: 12px; font-weight: 700; cursor: pointer;
@@ -53,25 +53,31 @@
         .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px -5px var(--accent-glow); }
         .btn-outline { background: transparent; border: 1px solid #334155; margin-left: 15px; }
 
-        /* --- Grid System --- */
         .section { padding: 100px 10%; text-align: center; }
         .section-tag { color: var(--accent-primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 10px; display: block; }
         .section h2 { font-size: 2.5rem; margin-bottom: 50px; }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
 
-        /* --- Service Cards --- */
         .card {
             background: var(--card-bg); padding: 40px; border-radius: 24px;
             text-align: left; border: 1px solid rgba(255,255,255,0.05);
             transition: 0.4s; position: relative; overflow: hidden;
+            text-decoration: none; color: inherit; display: block;
         }
         .card:hover { transform: translateY(-10px); border-color: var(--accent-primary); background: #131c31; }
-        .card i { color: var(--accent-primary); margin-bottom: 20px; }
-        .card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+        .card i { margin-bottom: 20px; }
+        .card h3 { margin-bottom: 15px; font-size: 1.4rem; color: white; }
         .card p { color: var(--text-dim); line-height: 1.6; }
 
-        /* --- Process Step Styling --- */
+        /* --- Moto Gallery --- */
+        .moto-img {
+            width: 100%; height: 350px; object-fit: cover; border-radius: 20px;
+            filter: grayscale(40%); transition: 0.5s;
+        }
+        .moto-card:hover .moto-img { filter: grayscale(0%); transform: scale(1.02); }
+        .moto-text { margin-top: 15px; font-weight: 600; color: var(--text-main); }
+
         .process-row { text-align: left; max-width: 900px; margin: 0 auto; }
         .step { display: flex; align-items: flex-start; margin-bottom: 40px; position: relative; }
         .step-num { 
@@ -80,7 +86,6 @@
             font-weight: 800; margin-right: 25px;
         }
 
-        /* --- Pricing Table --- */
         .price-card {
             background: #0f172a; padding: 45px 30px; border-radius: 24px;
             border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
@@ -92,11 +97,9 @@
         .price-card li { margin-bottom: 12px; display: flex; align-items: center; }
         .price-card li::before { content: '✓'; color: var(--success); margin-right: 10px; font-weight: bold; }
 
-        /* --- Footer & Contact --- */
         .contact-box { background: linear-gradient(180deg, #0f172a, #05070a); border-radius: 30px; padding: 60px; margin-top: 50px; }
         footer { padding: 40px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--text-dim); font-size: 0.9rem; }
 
-        /* --- Floating WhatsApp --- */
         .whatsapp {
             position: fixed; bottom: 30px; right: 30px; background: #25D366;
             width: 60px; height: 60px; border-radius: 50%; display: flex;
@@ -106,7 +109,6 @@
         }
         .whatsapp:hover { transform: scale(1.1); }
 
-        /* --- Responsive --- */
         @media (max-width: 768px) {
             header { padding: 20px; }
             nav { display: none; }
@@ -119,12 +121,12 @@
 <body>
 
 <header>
-    <div class="logo">OMNICORE</div>
+    <a href="#" class="logo">OMNICORE</a>
     <nav>
         <a href="#services">Services</a>
-        <a href="#process">Our Process</a>
+        <a href="#socials">Social Media</a>
+        <a href="#moto">Our Vision</a>
         <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
     </nav>
     <a href="https://wa.me/918459530220" class="btn" style="padding: 10px 20px; font-size: 0.8rem;">Let's Talk</a>
 </header>
@@ -139,36 +141,78 @@
     </div>
 </section>
 
-<section id="services" class="section">
+<section id="socials" class="section" style="background: #080b12;">
+    <span class="section-tag">Stay Connected</span>
+    <h2>Follow Our Journey</h2>
+    <div class="grid">
+        <a href="https://www.instagram.com/omnicoredigital?utm_source=qr&igsh=NGE1Nndqa3F6cW4y" target="_blank" class="card">
+            <i data-lucide="instagram" size="40" color="var(--insta)"></i>
+            <h3>Instagram</h3>
+            <p>Watch our latest viral reels and shop transformations in real-time.</p>
+        </a>
+        <a href="#" class="card">
+            <i data-lucide="youtube" size="40" color="var(--yt)"></i>
+            <h3>YouTube</h3>
+            <p>Coming Soon: Detailed store tours and business growth masterclasses.</p>
+        </a>
+        <a href="#" class="card">
+            <i data-lucide="facebook" size="40" color="var(--fb)"></i>
+            <h3>Facebook</h3>
+            <p>Join our community of local merchants and retail business owners.</p>
+        </a>
+    </div>
+</section>
+
+<section id="moto" class="section">
+    <span class="section-tag">Our Moto</span>
+    <h2>Turning Shops Into Brands</h2>
+    <div class="grid">
+        <div class="moto-card">
+            <img src="https://images.unsplash.com/photo-1556740734-7f9a2b774159?auto=format&fit=crop&q=80&w=600" class="moto-img" alt="Retail Focus">
+            <p class="moto-text">Highlighting Every Detail</p>
+        </div>
+        <div class="moto-card">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=600" class="moto-img" alt="Cafe Focus">
+            <p class="moto-text">Capturing Local Vibes</p>
+        </div>
+        <div class="moto-card">
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=600" class="moto-img" alt="Production Focus">
+            <p class="moto-text">Professional Production</p>
+        </div>
+    </div>
+    <p style="margin-top: 40px; color: var(--text-dim); max-width: 800px; margin-left: auto; margin-right: auto;">
+        Our mission is simple: To provide local merchants with the same high-quality cinematic marketing that big brands use, making your business stand out in a crowded digital world.
+    </p>
+</section>
+
+<section id="services" class="section" style="background: #080b12;">
     <span class="section-tag">What We Do</span>
     <h2>Services Built for Growth</h2>
     <div class="grid">
         <div class="card">
-            <i data-lucide="video" size="40"></i>
+            <i data-lucide="video" size="40" color="#3b82f6"></i>
             <h3>Product Showcases</h3>
             <p>High-definition cinematic shots that make your food or products look irresistible to customers.</p>
         </div>
         <div class="card">
-            <i data-lucide="instagram" size="40"></i>
+            <i data-lucide="instagram" size="40" color="#3b82f6"></i>
             <h3>Viral Reels</h3>
             <p>Trend-focused short videos designed to blow up on Instagram and reach your local community.</p>
         </div>
         <div class="card">
-            <i data-lucide="map-pin" size="40"></i>
+            <i data-lucide="map-pin" size="40" color="#3b82f6"></i>
             <h3>Local SEO Push</h3>
             <p>Strategically designed content that helps your shop show up when locals search for your services.</p>
         </div>
         <div class="card">
-            <i data-lucide="layers" size="40"></i>
+            <i data-lucide="layers" size="40" color="#3b82f6"></i>
             <h3>Full Branding</h3>
             <p>From logos to digital posters, we ensure your shop looks like a professional premium brand.</p>
         </div>
     </div>
 </section>
 
-
-
-<section id="process" class="section" style="background: #080b12;">
+<section id="process" class="section">
     <span class="section-tag">Workflow</span>
     <h2>How We Transform Your Shop</h2>
     <div class="process-row">
@@ -196,7 +240,7 @@
     </div>
 </section>
 
-<section id="pricing" class="section">
+<section id="pricing" class="section" style="background: #080b12;">
     <span class="section-tag">Pricing Plans</span>
     <h2>Invest in Your Growth</h2>
     <div class="grid">
@@ -209,7 +253,7 @@
                 <li>48 Hour Delivery</li>
                 <li>Social Media Setup</li>
             </ul>
-            <a href="#" class="btn btn-outline" style="width: 100%; margin:0;">Get Started</a>
+            <a href="https://wa.me/918459530220" class="btn btn-outline" style="width: 100%; margin:0;">Get Started</a>
         </div>
         <div class="price-card featured">
             <h3>Business</h3>
@@ -221,7 +265,7 @@
                 <li>Professional Captions</li>
                 <li>Local Tags Research</li>
             </ul>
-            <a href="#" class="btn" style="width: 100%;">Popular Choice</a>
+            <a href="https://wa.me/918459530220" class="btn" style="width: 100%;">Popular Choice</a>
         </div>
         <div class="price-card">
             <h3>Growth</h3>
@@ -232,7 +276,7 @@
                 <li>Full Branding Graphics</li>
                 <li>Google Maps Photos</li>
             </ul>
-            <a href="#" class="btn btn-outline" style="width: 100%; margin:0;">Select Growth</a>
+            <a href="https://wa.me/918459530220" class="btn btn-outline" style="width: 100%; margin:0;">Select Growth</a>
         </div>
     </div>
 </section>
@@ -241,7 +285,6 @@
     <div class="contact-box">
         <span class="section-tag">Get in Touch</span>
         <h2>Start Growing Today</h2>
-        <p style="margin-bottom: 30px;">Ready to see your shop full of customers? Message us now.</p>
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 20px;">
             <div>
                 <p style="color:var(--accent-primary); font-weight:700;">CALL US</p>
