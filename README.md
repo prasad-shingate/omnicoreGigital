@@ -1,0 +1,2 @@
+# omnicoreGigital
+Create AI videos 
